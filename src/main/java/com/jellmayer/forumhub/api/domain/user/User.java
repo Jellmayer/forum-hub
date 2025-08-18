@@ -1,4 +1,4 @@
-package com.jellmayer.forumhub.api.domain.course;
+package com.jellmayer.forumhub.api.domain.user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,15 +14,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Course {
+public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String category;
+    private String email;
+    private String password;
 
-    public Course(CreateCourseDto courseDto) {
-        this.name = courseDto.name();
-        this.category = courseDto.category();
+    public User(CreateUserDto data){
+        this.name = data.name();
+        this.email = data.email();
+        this.password = data.password();
     }
 }
