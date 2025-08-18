@@ -5,6 +5,7 @@ import com.jellmayer.forumhub.api.domain.user.User;
 import com.jellmayer.forumhub.api.domain.user.UserDetailDto;
 import com.jellmayer.forumhub.api.domain.user.UserRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,7 @@ public class UserController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<UserDetailDto> create(@RequestBody CreateUserDto data, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<UserDetailDto> create(@RequestBody @Valid CreateUserDto data, UriComponentsBuilder uriBuilder){
         var user = new User(data);
         repository.save(user);
 
