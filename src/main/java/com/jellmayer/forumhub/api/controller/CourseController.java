@@ -21,7 +21,7 @@ public class CourseController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity create(@RequestBody @Valid CreateCourseDto data, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<CourseDetailDto> create(@RequestBody @Valid CreateCourseDto data, UriComponentsBuilder uriBuilder){
         var course = new Course(data);
         repository.save(course);
 
@@ -31,7 +31,7 @@ public class CourseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity detail(@PathVariable Long id){
+    public ResponseEntity<CourseDetailDto> detail(@PathVariable Long id){
         var course = repository.getReferenceById(id);
         return ResponseEntity.ok(new CourseDetailDto(course));
     }

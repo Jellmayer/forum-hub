@@ -18,8 +18,8 @@ public class Course {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    String name;
-    String category;
+    private String name;
+    private String category;
 
     public Course(CreateCourseDto data) {
         this.name = data.name();
