@@ -19,16 +19,34 @@ public class TopicService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public Topic createTopic(CreateTopicDto topicDto){
-        User author = userRepository.findById(topicDto.authorId())
-                .orElseThrow(() -> new EntityNotFoundException("Autor não encontrado com o ID: " + topicDto.authorId()));
+    public TopicDetailDto createTopic(CreateTopicDto newTopicDto){
+        User author = userRepository.findById(newTopicDto.authorId())
+                .orElseThrow(() -> new EntityNotFoundException("Autor não encontrado com o ID: " + newTopicDto.authorId()));
 
-        Course course = courseRepository.findById(topicDto.courseId())
-                .orElseThrow(() -> new EntityNotFoundException("Curso não encontrado com o ID: " + topicDto.courseId()));
+        Course course = courseRepository.findById(newTopicDto.courseId())
+                .orElseThrow(() -> new EntityNotFoundException("Curso não encontrado com o ID: " + newTopicDto.courseId()));
 
-        Topic newTopic = new Topic(topicDto.title(), topicDto.message(), author, course);
+        Topic newTopic = new Topic(newTopicDto.title(), newTopicDto.message(), author, course);
 
-        return topicRepository.save(newTopic);
+        return new TopicDetailDto(topicRepository.save(newTopic));
 
+    }
+
+    public TopicDetailDto updateTopic(Long id, UpdateTopicDto updateTopicDto){
+        Topic topic = topicRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Tópico não encontrado com o ID: " + id));
+
+        TopicStatus topicStatus = TopicStatus.fromString(updateTopicDto.status());
+
+        topic.updateInfo(updateTopicDto.title(), updateTopicDto.message(), topicStatus);
+
+        return new TopicDetailDto(topic);
+    }
+
+    public void deleteTopic(Long id) {
+        if (!topicRepository.existsById(id)){
+            throw new EntityNotFoundException("Tópico não encontrado com o ID: " + id);
+        }
+        topicRepository.deleteById(id);
     }
 }

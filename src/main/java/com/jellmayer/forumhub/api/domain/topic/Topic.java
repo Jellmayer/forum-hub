@@ -3,15 +3,13 @@ package com.jellmayer.forumhub.api.domain.topic;
 import com.jellmayer.forumhub.api.domain.course.Course;
 import com.jellmayer.forumhub.api.domain.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -22,7 +20,9 @@ public class Topic {
     private String title;
     private String message;
     private LocalDate creationDate;
-    private Status status;
+
+    @Enumerated(EnumType.STRING)
+    private TopicStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
@@ -38,6 +38,18 @@ public class Topic {
         this.author = author;
         this.course = course;
         this.creationDate = LocalDate.now();
-        this.status = Status.UNANSWERED;
+        this.status = TopicStatus.UNANSWERED;
+    }
+
+    public void updateInfo(String title, String message, TopicStatus status) {
+        if (title != null && !title.isBlank()) {
+            this.title = title;
+        }
+        if (message != null && !message.isBlank()) {
+            this.message = message;
+        }
+        if (status != null) {
+            this.status = status;
+        }
     }
 }
