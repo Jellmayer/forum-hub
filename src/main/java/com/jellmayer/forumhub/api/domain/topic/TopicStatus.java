@@ -5,14 +5,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum TopicStatus {
 
-    // Status possíveis e seus valores de exibição.
+    // Status possíveis e os seus valores de exibição.
     UNANSWERED("Aberto"),
     SOLVED("Solucionado"),
     CLOSED("Fechado");
 
     private final String displayValue;
 
-    // Construtor privado que associa a string a cada constante do enum.
+    // Construtor privado que associa a ‘string’ a cada constante do enum.
     TopicStatus(String displayName) {
         this.displayValue = displayName;
     }

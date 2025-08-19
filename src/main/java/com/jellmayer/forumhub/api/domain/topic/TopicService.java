@@ -5,19 +5,16 @@ import com.jellmayer.forumhub.api.domain.course.CourseRepository;
 import com.jellmayer.forumhub.api.domain.user.User;
 import com.jellmayer.forumhub.api.domain.user.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class TopicService {
-    @Autowired
-    private TopicRepository topicRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private CourseRepository courseRepository;
+    private final TopicRepository topicRepository;
+    private final UserRepository userRepository;
+    private final CourseRepository courseRepository;
 
     public TopicDetailDto createTopic(CreateTopicDto newTopicDto){
         User author = userRepository.findById(newTopicDto.authorId())

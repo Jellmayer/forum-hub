@@ -4,6 +4,7 @@ import com.jellmayer.forumhub.api.domain.topic.*;
 import com.jellmayer.forumhub.api.domain.user.UserDetailDto;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +14,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/topic")
+@RequiredArgsConstructor
 public class TopicController {
-
-    @Autowired
-    private TopicRepository repository;
-
-    @Autowired
-    private TopicService service;
+    private final TopicRepository repository;
+    private final TopicService service;
 
     @PostMapping
     @Transactional

@@ -6,6 +6,7 @@ import com.jellmayer.forumhub.api.domain.course.CourseRepository;
 import com.jellmayer.forumhub.api.domain.course.CreateCourseDto;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +14,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/course")
+@RequiredArgsConstructor
 public class CourseController {
-
-    @Autowired
-    private CourseRepository repository;
+    private final CourseRepository repository;
 
     @PostMapping
     @Transactional
