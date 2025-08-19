@@ -22,9 +22,9 @@ public class User {
     private String email;
     private String password;
 
-    public User(CreateUserDto data){
-        this.name = data.name();
-        this.email = data.email();
-        this.password = data.password();
+    public User(CreateUserDto userDto){
+        this.name = userDto.name();
+        this.email = userDto.email();
+        this.password = userDto.password();
     }
 }
