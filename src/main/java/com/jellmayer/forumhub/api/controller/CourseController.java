@@ -2,17 +2,16 @@ package com.jellmayer.forumhub.api.controller;
 
 import com.jellmayer.forumhub.api.domain.course.Course;
 import com.jellmayer.forumhub.api.domain.course.CourseDetailDto;
-import com.jellmayer.forumhub.api.domain.course.CreateCourseDto;
 import com.jellmayer.forumhub.api.domain.course.CourseRepository;
+import com.jellmayer.forumhub.api.domain.course.CreateCourseDto;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Controller
+@RestController
 @RequestMapping("/course")
 public class CourseController {
 
