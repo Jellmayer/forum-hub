@@ -1,6 +1,6 @@
 # ForumHub API 🚀
 
-![Status do Projeto](https://img.shields.io/badge/status--green)
+![Status do Projeto](https://img.shields.io/badge/status-in_progress-green)
 ![Linguagem](https://img.shields.io/badge/java-24-blue)
 ![Framework](https://img.shields.io/badge/spring%20boot-3.3.0-brightgreen)
 
@@ -12,10 +12,16 @@ O **ForumHub** é uma API REST desenvolvida em Java com Spring Boot, que simula 
 
 ## ✨ Funcionalidades Principais
 
-* **🔐 Autenticação e Autorização:** Sistema de login seguro utilizando JSON Web Tokens (JWT) para proteger os endpoints.
+* **🔐 Autenticação e Autorização:** Sistema de login com JSON Web Tokens (JWT) para proteger os endpoints.
 * **💬 Gestão de Tópicos:** CRUD (Criar, Ler, Atualizar, Deletar) completo para os tópicos do fórum.
 * **✅ Validações:** Regras de negócio para evitar a duplicação de tópicos e garantir a integridade dos dados.
 * **🗃️ Banco de Dados:** Uso de Flyway para gerenciar as migrações do banco de dados de forma versionada e automática.
+
+
+## Próximos Passos
+* Implementar respostas para os tópicos
+* Documentar a API
+* Adicionar verificações na criação de usuário, com o desenvolvimento da classe UserService
 
 
 
@@ -93,8 +99,7 @@ Se essa etapa for pulada, a chave secreta padrão declarada em `api.security.tok
 
 
 
-## 👨‍💻 Autor
+## 👨‍💻 Autoria
 
-Projeto desenvolvido por **Jellmayer** como parte do programa Alura ONE.
-
+Projeto desenvolvido por **Thais Jellmayer** como parte do programa Alura ONE.
 
